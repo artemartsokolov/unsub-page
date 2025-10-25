@@ -105,6 +105,43 @@
         line-height: 1.5;
       }
 
+      .promo {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px 22px;
+        border-radius: 18px;
+        border: 1px solid rgba(25, 9, 47, 0.18);
+        background: linear-gradient(120deg, rgba(25, 9, 47, 0.08), rgba(225, 34, 77, 0.12));
+        width: 100%;
+      }
+
+      .promo strong {
+        font-family: "Figtree", sans-serif;
+        font-weight: 600;
+        color: #19092f;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        font-size: 14px;
+      }
+
+      .promo p {
+        color: #4b5563;
+      }
+
+      .promo-code {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        color: #19092f;
+        padding: 10px 18px;
+        border-radius: 12px;
+        background: rgba(25, 9, 47, 0.08);
+        width: fit-content;
+      }
+
       .actions {
         display: flex;
         flex-wrap: wrap;
@@ -235,6 +272,10 @@
         .highlight {
           padding: 14px 16px;
         }
+
+        .promo {
+          padding: 18px 18px 20px;
+        }
       }
     </style>
   </head>
@@ -264,6 +305,14 @@
               <li>Ready-to-use templates and real examples agents share with clients</li>
               <li>Invites to live product sessions & roadmap previews</li>
             </ul>
+          </div>
+          <div class="promo">
+            <strong>Stay ahead</strong>
+            <div class="promo-code">L20X</div>
+            <p>
+              Use this promo on vitrimo.com when you sign up to unlock five free single-property websites
+              generated straight from any Zillow link.
+            </p>
           </div>
           <div class="actions">
             <label for="unsubscribe-toggle">Unsubscribe</label>
