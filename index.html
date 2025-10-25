@@ -215,7 +215,7 @@
         gap: 12px;
       }
 
-      label[for="unsubscribe-toggle"] {
+      .cta-primary {
         display: inline-flex;
         justify-content: center;
         align-items: center;
@@ -232,14 +232,21 @@
         text-decoration: none;
       }
 
-      label[for="unsubscribe-toggle"]:hover {
+      .cta-primary:hover {
         transform: translateY(-1px);
         filter: brightness(1.05);
       }
 
-      label[for="unsubscribe-toggle"]:focus-visible {
+      .cta-primary:focus-visible {
         outline: 3px solid rgba(214, 42, 125, 0.4);
         outline-offset: 4px;
+      }
+
+      .cta-primary[disabled] {
+        cursor: not-allowed;
+        opacity: 0.7;
+        transform: none;
+        filter: none;
       }
 
       .secondary-link {
@@ -287,6 +294,20 @@
         color: var(--muted-foreground);
       }
 
+      .feedback {
+        font-size: 14px;
+        line-height: 1.4;
+        display: none;
+      }
+
+      .feedback.feedback-error {
+        color: #e1224d;
+      }
+
+      .feedback.feedback-success {
+        color: #046c4e;
+      }
+
       #unsubscribe-toggle:checked ~ main .state-initial {
         display: none;
       }
@@ -327,7 +348,7 @@
           align-items: stretch;
         }
 
-        label[for="unsubscribe-toggle"] {
+        .cta-primary {
           width: 100%;
         }
 
@@ -415,9 +436,12 @@
             </div>
           </div>
           <div class="actions">
-            <label for="unsubscribe-toggle">Unsubscribe</label>
+            <button type="button" class="cta-primary" id="unsubscribe-button" data-action="unsubscribe">
+              Unsubscribe
+            </button>
             <a class="secondary-link" href="https://vitrimo.com/">Stay subscribed</a>
           </div>
+          <p class="feedback" id="unsubscribe-feedback" role="alert"></p>
         </div>
 
         <div class="state state-confirmation">
@@ -439,5 +463,69 @@
 
       <footer>© Vitrimo. Helping agents close faster.</footer>
     </main>
+
+    <script>
+      (function () {
+        const unsubscribeButton = document.getElementById("unsubscribe-button");
+        const unsubscribeToggle = document.getElementById("unsubscribe-toggle");
+        const feedbackEl = document.getElementById("unsubscribe-feedback");
+        const params = new URLSearchParams(window.location.search);
+        const email = params.get("email")?.trim();
+        const UNLOCK_TEXT = "Unsubscribe";
+        const PROCESSING_TEXT = "Processing...";
+
+        function showFeedback(message, type = "error") {
+          if (!feedbackEl) return;
+          feedbackEl.textContent = message;
+          feedbackEl.classList.remove("feedback-error", "feedback-success");
+          feedbackEl.classList.add(type === "success" ? "feedback-success" : "feedback-error");
+          feedbackEl.style.display = message ? "block" : "none";
+        }
+
+        async function handleUnsubscribe() {
+          if (!unsubscribeButton) return;
+          if (unsubscribeButton.dataset.state === "busy") return;
+
+          if (!email) {
+            showFeedback("We couldn’t detect which email to unsubscribe. Please use the link from your inbox.", "error");
+            return;
+          }
+
+          unsubscribeButton.dataset.state = "busy";
+          unsubscribeButton.setAttribute("disabled", "true");
+          unsubscribeButton.textContent = PROCESSING_TEXT;
+          showFeedback("", "error");
+
+          try {
+            const response = await fetch("https://n8n.revrev.uk/webhook/a5750f40-e16f-4abb-924a-9d4faccb791e", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email }),
+            });
+
+            if (!response.ok) {
+              throw new Error("Webhook responded with an error");
+            }
+
+            showFeedback("You have been unsubscribed. We’ll only reach out again if you opt back in.", "success");
+            if (unsubscribeToggle) {
+              unsubscribeToggle.checked = true;
+            }
+          } catch (error) {
+            console.error("Unsubscribe error:", error);
+            showFeedback("We couldn’t unsubscribe you right now. Please try again or contact support.", "error");
+          } finally {
+            unsubscribeButton.dataset.state = "idle";
+            unsubscribeButton.removeAttribute("disabled");
+            unsubscribeButton.textContent = UNLOCK_TEXT;
+          }
+        }
+
+        unsubscribeButton?.addEventListener("click", function (event) {
+          event.preventDefault();
+          handleUnsubscribe();
+        });
+      })();
+    </script>
   </body>
 </html>
