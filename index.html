@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Vitrimo — отписка от рассылки</title>
+    <title>Vitrimo — unsubscribe from emails</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Figtree:wght@500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Outfit:wght@100..900&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -32,7 +32,7 @@
 
       body {
         margin: 0;
-        font-family: "Inter", sans-serif;
+        font-family: "Outfit", sans-serif;
         color: var(--foreground);
         background:
           radial-gradient(120% 120% at 100% 0%, rgba(214, 42, 125, 0.16), transparent 45%),
@@ -51,14 +51,9 @@
       }
 
       .card {
-        background: var(--card);
         color: var(--card-foreground);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
         padding: 40px 40px 36px;
-        box-shadow:
-          0 20px 50px -20px rgba(18, 28, 45, 0.35),
-          0 10px 30px -15px rgba(18, 28, 45, 0.2);
+        border-radius: var(--radius);
         display: grid;
         gap: 28px;
       }
@@ -69,11 +64,12 @@
       }
 
       h1 {
-        font-family: "Figtree", "Inter", sans-serif;
+        font-family: "Figtree", sans-serif;
         font-size: clamp(26px, 8vw, 36px);
         line-height: 1.1;
         margin: 0;
         color: var(--foreground);
+        font-weight: 500;
       }
 
       p {
