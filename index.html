@@ -108,12 +108,15 @@
       .promo {
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        padding: 20px 22px;
+        gap: 12px;
+        padding: 20px 24px;
         border-radius: 18px;
-        border: 1px solid rgba(25, 9, 47, 0.18);
-        background: linear-gradient(120deg, rgba(25, 9, 47, 0.08), rgba(225, 34, 77, 0.12));
+        border: 1px solid rgba(255, 211, 128, 0.6);
+        background: linear-gradient(135deg, rgba(255, 229, 184, 0.35), rgba(229, 190, 106, 0.28)),
+          linear-gradient(45deg, rgba(25, 9, 47, 0.06), transparent);
         width: 100%;
+        position: relative;
+        overflow: hidden;
       }
 
       .promo strong {
@@ -127,19 +130,86 @@
 
       .promo p {
         color: #4b5563;
+        margin: 0;
       }
 
       .promo-code {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        font-weight: 600;
-        letter-spacing: 0.1em;
+        gap: 12px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
         color: #19092f;
-        padding: 10px 18px;
-        border-radius: 12px;
-        background: rgba(25, 9, 47, 0.08);
+        padding: 12px 18px;
+        border-radius: 14px;
+        background: linear-gradient(120deg, rgba(255, 236, 204, 0.68), rgba(255, 207, 148, 0.58));
         width: fit-content;
+        text-transform: uppercase;
+        font-size: 16px;
+      }
+
+      .promo-code svg {
+        width: 18px;
+        height: 18px;
+        fill: none;
+        stroke: #19092f;
+        stroke-width: 1.6;
+      }
+
+      .promo-code button {
+        appearance: none;
+        border: none;
+        background: transparent;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+      }
+
+      .promo-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .promo-header span {
+        font-size: 32px;
+        line-height: 1;
+      }
+
+      .promo .gift-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, rgba(255, 221, 158, 0.6), rgba(225, 34, 77, 0.22));
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .promo .gift-icon svg {
+        width: 22px;
+        height: 22px;
+        fill: none;
+        stroke: #19092f;
+        stroke-width: 1.6;
+      }
+
+      .promo a {
+        color: #19092f;
+        font-weight: 600;
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 4px;
+      }
+
+      .promo a:hover {
+        color: #e1224d;
       }
 
       .actions {
@@ -276,6 +346,17 @@
         .promo {
           padding: 18px 18px 20px;
         }
+
+        .promo-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+
+        .promo-code {
+          width: 100%;
+          justify-content: space-between;
+        }
       }
     </style>
   </head>
@@ -307,10 +388,28 @@
             </ul>
           </div>
           <div class="promo">
+            <div class="promo-header">
+              <div class="promo-code">
+                <span>L20X</span>
+                <button type="button" aria-label="Copy promo code">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M9 9V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4" />
+                    <rect x="3" y="7" width="12" height="14" rx="2" />
+                  </svg>
+                </button>
+              </div>
+              <span class="gift-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="m12 7 5-4m0 0 1 5m-1-5 4 2M7 3l5 4m0 0-5 1M12 7 8 3M4 5l1 5m0 0-4-2m4 2-1 5m9-6H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-8Z" />
+                  <path d="M12 16v-6" />
+                </svg>
+              </span>
+            </div>
             <strong>Stay ahead</strong>
-            <div class="promo-code">L20X</div>
             <p>
-              Use this promo on vitrimo.com when you sign up to unlock five free single-property websites
+              Use this promo on
+              <a href="https://vitrimo.com/" target="_blank" rel="noopener noreferrer">vitrimo.com</a>
+              when you sign up to unlock five free single-property websites
               generated straight from any Zillow link.
             </p>
           </div>
