@@ -109,13 +109,12 @@
         overflow: hidden;
       }
 
-      .promo strong {
+      .promo-heading {
         font-family: "Figtree", sans-serif;
         font-weight: 600;
         color: #19092f;
-        letter-spacing: 0.02em;
-        text-transform: uppercase;
-        font-size: 14px;
+        font-size: 16px;
+        line-height: 1.35;
       }
 
       .promo p {
@@ -163,19 +162,20 @@
       .promo-header {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 12px;
+        gap: 20px;
+        flex-wrap: wrap;
       }
 
-      .promo-header span {
-        font-size: 32px;
-        line-height: 1;
+      .promo-title {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
       }
 
       .promo .gift-icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 12px;
+        width: 32px;
+        height: 32px;
+        border-radius: 10px;
         background: linear-gradient(135deg, rgba(255, 221, 158, 0.6), rgba(225, 34, 77, 0.22));
         display: inline-flex;
         align-items: center;
@@ -183,11 +183,17 @@
       }
 
       .promo .gift-icon svg {
-        width: 22px;
-        height: 22px;
+        width: 18px;
+        height: 18px;
         fill: none;
         stroke: #19092f;
         stroke-width: 1.6;
+      }
+
+      .promo-body {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
       }
 
       .promo a {
@@ -339,12 +345,16 @@
 
         .promo-header {
           flex-direction: column;
-          align-items: flex-start;
+          align-items: stretch;
           gap: 16px;
         }
 
         .promo-code {
           width: 100%;
+          justify-content: space-between;
+        }
+
+        .promo-title {
           justify-content: space-between;
         }
       }
@@ -381,20 +391,24 @@
                   </svg>
                 </button>
               </div>
-              <span class="gift-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="m12 7 5-4m0 0 1 5m-1-5 4 2M7 3l5 4m0 0-5 1M12 7 8 3M4 5l1 5m0 0-4-2m4 2-1 5m9-6H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-8Z" />
-                  <path d="M12 16v-6" />
-                </svg>
-              </span>
+              <div class="promo-title">
+                <span class="gift-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="m12 7 5-4m0 0 1 5m-1-5 4 2M7 3l5 4m0 0-5 1M12 7 8 3M4 5l1 5m0 0-4-2m4 2-1 5m9-6H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-8Z" />
+                    <path d="M12 16v-6" />
+                  </svg>
+                </span>
+                <span class="promo-heading">Unlock five free single-property websites</span>
+              </div>
             </div>
-            <strong>Unlock five free single-property websites</strong>
-            <p>
-              Use this promo on
-              <a href="https://vitrimo.com/" target="_blank" rel="noopener noreferrer">vitrimo.com</a>
-              when you sign up to unlock five free single-property websites
-              generated straight from any Zillow link.
-            </p>
+            <div class="promo-body">
+              <p>
+                Use this promo on
+                <a href="https://vitrimo.com/" target="_blank" rel="noopener noreferrer">vitrimo.com</a>
+                when you sign up to unlock five free single-property websites
+                generated straight from any Zillow link.
+              </p>
+            </div>
           </div>
           <div class="actions">
             <label for="unsubscribe-toggle">Unsubscribe</label>
