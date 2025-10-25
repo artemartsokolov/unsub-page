@@ -70,7 +70,7 @@
 
       h1 {
         font-family: "Figtree", "Inter", sans-serif;
-        font-size: clamp(28px, 4vw, 36px);
+        font-size: clamp(26px, 8vw, 36px);
         line-height: 1.1;
         margin: 0;
         color: var(--foreground);
@@ -86,9 +86,26 @@
       .highlight {
         background: rgba(214, 42, 125, 0.08);
         color: var(--foreground);
-        padding: 12px 16px;
+        padding: 16px 18px;
         border-radius: calc(var(--radius) - 4px);
         border: 1px solid rgba(214, 42, 125, 0.15);
+      }
+
+      .highlight strong {
+        display: block;
+        margin-bottom: 12px;
+      }
+
+      .highlight ul {
+        margin: 0;
+        padding-left: 20px;
+        display: grid;
+        gap: 8px;
+        color: var(--muted-foreground);
+      }
+
+      .highlight li {
+        line-height: 1.5;
       }
 
       .actions {
@@ -197,10 +214,12 @@
       @media (max-width: 640px) {
         body {
           padding: 24px 14px;
+          align-items: flex-start;
         }
 
         .card {
           padding: 28px 24px;
+          gap: 24px;
         }
 
         .actions {
@@ -210,6 +229,14 @@
 
         label[for="unsubscribe-toggle"] {
           width: 100%;
+        }
+
+        .logo {
+          width: 120px;
+        }
+
+        .highlight {
+          padding: 14px 16px;
         }
       }
     </style>
@@ -221,48 +248,50 @@
     <main>
       <section class="card">
         <img
-          src="/lovable-uploads/a4840f04-974f-4d4d-a8f9-9c8fa9c9c0f2.png"
-          alt="Логотип Vitrimo"
+          src="https://jdwqrsyesaxfvxdcpkbb.supabase.co/storage/v1/object/public/cashfiles//Vitirimo%20logo.png"
+          alt="Vitrimo logo"
           class="logo"
         />
 
         <div class="state state-initial">
-          <h1>Вы уверены, что хотите отписаться?</h1>
+          <h1>Are you sure you want to unsubscribe?</h1>
           <p>
-            Мы делимся практическими идеями о том, как из простой ссылки на Zillow сделать персональный
-            single property website, который помогает продавать быстрее.
+            Vitrimo turns any Zillow link into your agent-branded property website — one click, your
+            contacts, no competing-agent buttons. We email only when it helps you close faster.
           </p>
           <div class="highlight">
-            <strong>Отписываясь, вы перестанете получать:</strong>
-            <p>
-              Экспертные подсказки по улучшению презентации объекта, примеры лендингов и приглашения на
-              закрытые сессии по маркетингу недвижимости.
-            </p>
+            <strong>If you unsubscribe, you’ll miss:</strong>
+            <ul>
+              <li>New feature drops (1-click Zillow→Website, mobile editor, AI photo fixes)</li>
+              <li>Free credits, early access, and launch discounts</li>
+              <li>Ready-to-use templates and real examples agents share with clients</li>
+              <li>Invites to live product sessions & roadmap previews</li>
+            </ul>
           </div>
           <div class="actions">
-            <label for="unsubscribe-toggle">Отписаться</label>
-            <a class="secondary-link" href="https://vitrimo.com/">Остаться в курсе</a>
+            <label for="unsubscribe-toggle">Unsubscribe</label>
+            <a class="secondary-link" href="https://vitrimo.com/">Stay subscribed</a>
           </div>
         </div>
 
         <div class="state state-confirmation">
-          <span class="badge">Вы отписаны</span>
-          <h1>Готово, мы сняли вас с рассылки.</h1>
+          <span class="badge">Unsubscribed</span>
+          <h1>All set — you’re off the list.</h1>
           <p>
-            Надеемся, что вы всё же вернётесь, когда захотите увидеть, как быстро Vitrimo превращает
-            listing-страницу в полноценный сайт.
+            Whenever you’re ready to turn another listing into its own website, Vitrimo will be here to
+            help you launch in minutes.
           </p>
           <p class="muted">
-            Если вы передумаете, просто подпишитесь снова на нашем сайте — мы будем рады делиться новыми
-            идеями с вами.
+            Changed your mind? You can subscribe again anytime on our site and we’ll keep sending the
+            insights that move deals forward.
           </p>
           <div class="actions">
-            <a class="secondary-link" href="https://vitrimo.com/">Вернуться на vitrimo.com</a>
+            <a class="secondary-link" href="https://vitrimo.com/">Back to vitrimo.com</a>
           </div>
         </div>
       </section>
 
-      <footer>© Vitrimo. Помогаем агентам продавать быстрее.</footer>
+      <footer>© Vitrimo. Helping agents close faster.</footer>
     </main>
   </body>
 </html>
